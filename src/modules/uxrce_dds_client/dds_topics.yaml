@@ -5,17 +5,17 @@
 #####
 publications:
 
-  - topic: /fmu/out/collision_constraints
-    type: px4_msgs::msg::CollisionConstraints
+ # - topic: /fmu/out/collision_constraints
+ #   type: px4_msgs::msg::CollisionConstraints
 
   - topic: /fmu/out/failsafe_flags
     type: px4_msgs::msg::FailsafeFlags
 
-  - topic: /fmu/out/position_setpoint_triplet
-    type: px4_msgs::msg::PositionSetpointTriplet
+ # - topic: /fmu/out/position_setpoint_triplet
+ #   type: px4_msgs::msg::PositionSetpointTriplet
 
-  - topic: /fmu/out/sensor_combined
-    type: px4_msgs::msg::SensorCombined
+ # - topic: /fmu/out/sensor_combined
+ #   type: px4_msgs::msg::SensorCombined
 
   - topic: /fmu/out/timesync_status
     type: px4_msgs::msg::TimesyncStatus
@@ -23,30 +23,65 @@ publications:
   # - topic: /fmu/out/vehicle_angular_velocity
   #   type: px4_msgs::msg::VehicleAngularVelocity
 
-  - topic: /fmu/out/vehicle_attitude
-    type: px4_msgs::msg::VehicleAttitude
+ # - topic: /fmu/out/vehicle_attitude
+ #   type: px4_msgs::msg::VehicleAttitude
 
   - topic: /fmu/out/vehicle_control_mode
     type: px4_msgs::msg::VehicleControlMode
 
   - topic: /fmu/out/vehicle_global_position
     type: px4_msgs::msg::VehicleGlobalPosition
+    rate: 40.
 
-  - topic: /fmu/out/vehicle_gps_position
-    type: px4_msgs::msg::SensorGps
+ # - topic: /fmu/out/vehicle_gps_position
+ #   type: px4_msgs::msg::SensorGps
 
-  - topic: /fmu/out/vehicle_local_position
-    type: px4_msgs::msg::VehicleLocalPosition
+ # - topic: /fmu/out/vehicle_local_position
+ #   type: px4_msgs::msg::VehicleLocalPosition
 
   - topic: /fmu/out/vehicle_odometry
     type: px4_msgs::msg::VehicleOdometry
+    rate: 40.
 
   - topic: /fmu/out/vehicle_status
     type: px4_msgs::msg::VehicleStatus
 
-  - topic: /fmu/out/vehicle_trajectory_waypoint_desired
-    type: px4_msgs::msg::VehicleTrajectoryWaypoint
+  - topic: /fmu/out/esc_report
+    type: px4_msgs::msg::EscReport
 
+  - topic: /fmu/out/esc_status
+    type: px4_msgs::msg::EscStatus
+    rate: 1.
+    
+  - topic: /fmu/out/battery_status
+    type: px4_msgs::msg::BatteryStatus
+    rate: 1.
+    
+  - topic: /fmu/out/mission_result
+    type: px4_msgs::msg::MissionResult
+    rate: 1.
+    
+  # - topic: /fmu/out/rc_channels
+  #   type: px4_msgs::msg::RcChannels        
+
+  - topic: /fmu/out/log_message
+    type: px4_msgs::msg::LogMessage
+    
+  - topic: /fmu/out/sensor_baro
+    type: px4_msgs::msg::SensorBaro
+    rate: 10.
+    
+  - topic: /fmu/out/wind
+    type: px4_msgs::msg::Wind    
+    rate: 10.
+    
+  - topic: /fmu/out/vehicle_command_ack
+    type: px4_msgs::msg::VehicleCommandAck  
+
+ # - topic: /fmu/out/vehicle_trajectory_waypoint_desired
+ #   type: px4_msgs::msg::VehicleTrajectoryWaypoint
+
+        
 subscriptions:
 
   - topic: /fmu/in/offboard_control_mode
@@ -55,14 +90,14 @@ subscriptions:
   - topic: /fmu/in/onboard_computer_status
     type: px4_msgs::msg::OnboardComputerStatus
 
-  - topic: /fmu/in/obstacle_distance
-    type: px4_msgs::msg::ObstacleDistance
+ # - topic: /fmu/in/obstacle_distance
+ #   type: px4_msgs::msg::ObstacleDistance
 
-  - topic: /fmu/in/sensor_optical_flow
-    type: px4_msgs::msg::SensorOpticalFlow
+ # - topic: /fmu/in/sensor_optical_flow
+ #   type: px4_msgs::msg::SensorOpticalFlow
 
-  - topic: /fmu/in/telemetry_status
-    type: px4_msgs::msg::TelemetryStatus
+ # - topic: /fmu/in/telemetry_status
+ #   type: px4_msgs::msg::TelemetryStatus
 
   - topic: /fmu/in/trajectory_setpoint
     type: px4_msgs::msg::TrajectorySetpoint
@@ -70,8 +105,8 @@ subscriptions:
   - topic: /fmu/in/vehicle_attitude_setpoint
     type: px4_msgs::msg::VehicleAttitudeSetpoint
 
-  - topic: /fmu/in/vehicle_mocap_odometry
-    type: px4_msgs::msg::VehicleOdometry
+ # - topic: /fmu/in/vehicle_mocap_odometry
+ #   type: px4_msgs::msg::VehicleOdometry
 
   - topic: /fmu/in/vehicle_rates_setpoint
     type: px4_msgs::msg::VehicleRatesSetpoint
@@ -82,8 +117,15 @@ subscriptions:
   - topic: /fmu/in/vehicle_command
     type: px4_msgs::msg::VehicleCommand
 
-  - topic: /fmu/in/vehicle_trajectory_bezier
-    type: px4_msgs::msg::VehicleTrajectoryBezier
+  - topic: /fmu/in/mavlink_log
+    type: px4_msgs::msg::MavlinkLog
 
-  - topic: /fmu/in/vehicle_trajectory_waypoint
-    type: px4_msgs::msg::VehicleTrajectoryWaypoint
+  - topic: /fmu/in/landing_target_pose
+    type: px4_msgs::msg::LandingTargetPose
+    
+ # - topic: /fmu/in/vehicle_trajectory_bezier
+ #   type: px4_msgs::msg::VehicleTrajectoryBezier
+
+ # - topic: /fmu/in/vehicle_trajectory_waypoint
+ #   type: px4_msgs::msg::VehicleTrajectoryWaypoint
+ 
