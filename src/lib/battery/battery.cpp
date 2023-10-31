@@ -179,7 +179,8 @@ void Battery::publishBatteryStatus(const battery_status_s &battery_status)
 void Battery::updateAndPublishBatteryStatus(const hrt_abstime &timestamp)
 {
 	updateBatteryStatus(timestamp);
-	publishBatteryStatus(getBatteryStatus());
+	// publishBatteryStatus(getBatteryStatus());
+	// comment to remove empty battery_status message TEDOB
 }
 
 void Battery::sumDischarged(const hrt_abstime &timestamp, float current_a)
