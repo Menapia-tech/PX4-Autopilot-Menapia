@@ -58,9 +58,9 @@ publications:
     type: px4_msgs::msg::BatteryStatus
     rate: 1.
 
-  - topic: /fmu/out/mission_result
-    type: px4_msgs::msg::MissionResult
-    rate: 1.
+  # - topic: /fmu/out/mission_result
+  #   type: px4_msgs::msg::MissionResult
+  #   rate: 1.
 
   # - topic: /fmu/out/rc_channels
   #   type: px4_msgs::msg::RcChannels
@@ -78,6 +78,9 @@ publications:
 
   - topic: /fmu/out/vehicle_command_ack
     type: px4_msgs::msg::VehicleCommandAck
+
+  - topic: /fmu/out/vehicle_land_detected
+    type: px4_msgs::msg::VehicleLandDetected
 
  # - topic: /fmu/out/vehicle_trajectory_waypoint_desired
  #   type: px4_msgs::msg::VehicleTrajectoryWaypoint
