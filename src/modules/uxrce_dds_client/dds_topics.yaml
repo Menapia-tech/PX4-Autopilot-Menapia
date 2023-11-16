@@ -74,7 +74,7 @@ publications:
 
   - topic: /fmu/out/wind
     type: px4_msgs::msg::Wind
-    rate: 10.
+    rate: 2.
 
   - topic: /fmu/out/vehicle_command_ack
     type: px4_msgs::msg::VehicleCommandAck
