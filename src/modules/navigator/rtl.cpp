@@ -485,8 +485,9 @@ void RTL::set_rtl_item()
 			_mission_item.altitude_is_relative = false;
 
 			// disable weather vane when in loiter phase when landing on heisha
-			// Need to set MIS_YAW_ERR = 180 or yaw acc radius may not be met due to wind vaning
-			pos_sp_triplet->current.disable_weather_vane = true;
+			if (_param_rtl_ignore_wv.get() == true) {
+				pos_sp_triplet->current.disable_weather_vane = true;
+			}
 
 			if (rtl_heading_mode == RTLHeadingMode::RTL_CURRENT_HEADING) {
 				_mission_item.yaw = _navigator->get_local_position()->heading;
@@ -574,9 +575,11 @@ void RTL::set_rtl_item()
 			_mission_item.lon = _destination.lon;
 			_mission_item.altitude = _destination.alt;
 			_mission_item.altitude_is_relative = false;
+
 			// disable weather vane when in land phase when landing on heisha
-			// TODO make parameter to turn on and off
-			pos_sp_triplet->current.disable_weather_vane = true;
+			if ((_param_rtl_ignore_wv.get() == true) && (_param_wv_en.get() == true)) {
+				pos_sp_triplet->current.disable_weather_vane = true;
+			}
 
 			if (rtl_heading_mode == RTLHeadingMode::RTL_CURRENT_HEADING) {
 				_mission_item.yaw = _navigator->get_local_position()->heading;
