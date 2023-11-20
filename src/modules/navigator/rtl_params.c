@@ -200,3 +200,13 @@ PARAM_DEFINE_FLOAT(RTL_TIME_FACTOR, 1.1f);
  * @group Return To Land
  */
 PARAM_DEFINE_INT32(RTL_TIME_MARGIN, 100);
+
+/**
+ * Disable Weathervane mode while in the land phase of return mode
+ *
+ * For use with Heisha where correct landing orientation is required
+ *
+ * @boolean
+ * @group Return To Land
+ */
+PARAM_DEFINE_INT32(RTL_IGNORE_WV, 0);
