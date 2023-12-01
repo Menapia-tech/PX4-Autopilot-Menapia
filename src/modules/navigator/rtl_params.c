@@ -210,3 +210,21 @@ PARAM_DEFINE_INT32(RTL_TIME_MARGIN, 100);
  * @group Return To Land
  */
 PARAM_DEFINE_INT32(RTL_IGNORE_WV, 0);
+
+/**
+ * RTL heading
+ *
+ * Defines the heading to land at during RTL,
+ * this is only applied at the loiter land stages,
+ * at other stages the vehicle obeys RTL_HDG_MD
+ *
+ * Set to -1 to disable.
+ *
+ * @unit deg
+ * @min -1
+ * @max 360
+ * @decimal 1
+ * @increment 1
+ * @group Return Mode
+ */
+PARAM_DEFINE_INT32(RTL_HDG, -1);

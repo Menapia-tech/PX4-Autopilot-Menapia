@@ -177,8 +177,8 @@ private:
 		(ParamFloat<px4::params::RTL_TIME_FACTOR>) _param_rtl_time_factor,
 		(ParamInt<px4::params::RTL_TIME_MARGIN>)   _param_rtl_time_margin,
 		(ParamBool<px4::params::RTL_IGNORE_WV>)    _param_rtl_ignore_wv,
-		(ParamBool<px4::params::WV_EN>)		   _param_wv_en
-
+		(ParamBool<px4::params::WV_EN>)		   _param_wv_en,
+		(ParamInt<px4::params::RTL_HDG>)  	   _param_rtl_hdg
 	)
 
 	param_t		_param_mpc_z_v_auto_up{PARAM_INVALID};
