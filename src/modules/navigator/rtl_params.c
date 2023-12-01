@@ -214,8 +214,8 @@ PARAM_DEFINE_INT32(RTL_IGNORE_WV, 0);
 /**
  * RTL heading
  *
- * Defines the heading to land at during RTL,
- * this is only applied at the loiter land stages,
+ * Defines the heading at which to land during RTL,
+ * this is only applied at the loiter and land stages,
  * at other stages the vehicle obeys RTL_HDG_MD
  *
  * Set to -1 to disable.
