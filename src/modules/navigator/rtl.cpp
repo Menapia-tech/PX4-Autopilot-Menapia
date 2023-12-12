@@ -489,7 +489,13 @@ void RTL::set_rtl_item()
 				pos_sp_triplet->current.disable_weather_vane = true;
 			}
 
-			if (rtl_heading_mode == RTLHeadingMode::RTL_CURRENT_HEADING) {
+			float _specified_heading = static_cast<float>(_param_rtl_hdg.get());
+
+			// If we specify a heading to land at
+			if (_param_rtl_hdg.get() >= 0) {
+				_mission_item.yaw = math::radians(_specified_heading);
+
+			} else if (rtl_heading_mode == RTLHeadingMode::RTL_CURRENT_HEADING) {
 				_mission_item.yaw = _navigator->get_local_position()->heading;
 
 			} else {
@@ -581,7 +587,16 @@ void RTL::set_rtl_item()
 				pos_sp_triplet->current.disable_weather_vane = true;
 			}
 
-			if (rtl_heading_mode == RTLHeadingMode::RTL_CURRENT_HEADING) {
+			float _specified_heading = static_cast<float>(_param_rtl_hdg.get());
+
+			// If we specify a heading to land at
+			if (_param_rtl_hdg.get() > 0) {
+				_mission_item.yaw = math::radians(_specified_heading);
+				// Debug message about the RTL heading
+				mavlink_log_info(_navigator->get_mavlink_log_pub(), "RTL: land heading set to %.2f deg\t", static_cast<double>(_specified_heading));
+				events::send<float>(events::ID("rtl_heading_set"), events::Log::Info,"RTL: land heading set to {1:.2} deg", _specified_heading);
+
+			} else if (rtl_heading_mode == RTLHeadingMode::RTL_CURRENT_HEADING) {
 				_mission_item.yaw = _navigator->get_local_position()->heading;
 
 			} else {
