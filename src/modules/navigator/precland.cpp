@@ -103,6 +103,9 @@ PrecLand::on_activation()
 	_sp_pev_prev = matrix::Vector2f(0, 0);
 	_last_slewrate_time = 0;
 
+	mavlink_log_info(_navigator->get_mavlink_log_pub(), "Attempting precision landing\t");
+	events::send(events::ID("attempting_precision_landing"), events::Log::Info, "Attempting precision landing");
+
 	switch_to_state_start();
 
 	_is_activated = true;
@@ -225,9 +228,6 @@ void
 PrecLand::run_state_horizontal_approach()
 {
 	position_setpoint_triplet_s *pos_sp_triplet = _navigator->get_position_setpoint_triplet();
-
-	mavlink_log_info(_navigator->get_mavlink_log_pub(), "Attempting precision landing\t");
-	events::send(events::ID("attempting_precision_landing"), events::Log::Info, "Attempting precision landing");
 
 	// check if target visible, if not go to start
 	if (!check_state_conditions(PrecLandState::HorizontalApproach)) {
@@ -415,13 +415,15 @@ bool
 PrecLand::switch_to_state_search()
 {
 	PX4_INFO("Climbing to search altitude.");
-	vehicle_local_position_s *vehicle_local_position = _navigator->get_local_position();
+
+	// vehicle_local_position_s *vehicle_local_position = _navigator->get_local_position();
+	home_position_s &home_landing_position = *_navigator->get_home_position();
 
 	mavlink_log_info(_navigator->get_mavlink_log_pub(), "Climbing to search altitude");
 	events::send(events::ID("climbing_to_search_altitude"), events::Log::Info, "Climbing to search altitude");
 
 	position_setpoint_triplet_s *pos_sp_triplet = _navigator->get_position_setpoint_triplet();
-	pos_sp_triplet->current.alt = _navigator->get_mission_landing_start_alt() + _param_pld_srch_alt.get();
+	pos_sp_triplet->current.alt = home_landing_position.alt + _param_pld_srch_alt.get();
 	pos_sp_triplet->current.type = position_setpoint_s::SETPOINT_TYPE_POSITION;
 	_navigator->set_position_setpoint_triplet_updated();
 
