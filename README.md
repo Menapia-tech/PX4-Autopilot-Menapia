@@ -1,3 +1,13 @@
+## Menapia Specific instructions
+
+This is our forked PX4 repository.
+
+Our own branch is called `release/1.14_custom` and contains several Menapia-specific modifications
+
+IMPORTANT: There are occasionally back-ports of important pr's that should be ported into our custom branch also.
+
+
+
 # PX4 Drone Autopilot
 
 [![Releases](https://img.shields.io/github/release/PX4/PX4-Autopilot.svg)](https://github.com/PX4/PX4-Autopilot/releases) [![DOI](https://zenodo.org/badge/22634/PX4/PX4-Autopilot.svg)](https://zenodo.org/badge/latestdoi/22634/PX4/PX4-Autopilot)
